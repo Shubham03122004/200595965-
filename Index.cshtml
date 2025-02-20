@@ -1,0 +1,21 @@
+@model List<MvcCrudApp.Models.Student>
+
+<h1>ASP.NET</h1>
+<h2>Student List</h2>
+<a href="/Student/Create">Create New Student</a>
+<table border="1">
+    <tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Actions</th></tr>
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td>@student.StudentId</td>
+            <td>@student.FirstName</td>
+            <td>@student.LastName</td>
+            <td>@(string.IsNullOrEmpty(student.EmailAddress) ? "No Email" : student.EmailAddress)</td>
+            <td>
+                <a href="/Student/Edit/@student.StudentId">Edit</a> |
+                <a href="/Student/Delete/@student.StudentId">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
